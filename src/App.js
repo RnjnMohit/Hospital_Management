@@ -1,9 +1,15 @@
+import { useState } from 'react';
 import LoginForm from './pages/LoginForm';
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+
+
   return (
     <div>
-      <LoginForm />
+      <LoginForm setIsLoggedIn={setIsLoggedIn} />
     </div>
   );
 }
