@@ -17,6 +17,8 @@ const LoginForm = ({setIsLoggedIn}) => {
 
 
   function submitHandler(event){
+    console.log('submit');
+    console.log(data);
     event.preventDefault();
     setIsLoggedIn(true);
   }
