@@ -9,12 +9,10 @@ require('./config/patientDatabase').connect();
 
 app.use(express.json());
 
-// const doctor = require('./routes/doctorRoutes');
-// const patients = require('./routes/patientRoutes');
 const user = require('./routes/userRoutes');
-// app.use("/hospital", doctor);
-// app.use("/hospital", patients);
+const auth = require('./routes/authRoutes');
 app.use("/hospital", user);
+app.use('/user', auth);
 
 app.listen(PORT, () => {
     console.log(`App is listening at ${PORT}`);
