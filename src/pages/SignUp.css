@@ -7,7 +7,7 @@
 body{
     display: flex;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 120vh;
     align-items: center;
     background: url('../assets/bg.jpg');
     background-size: cover;
@@ -19,7 +19,7 @@ body{
     border-color: #fff;
     backdrop-filter: blur(30px);
     width: 40rem;
-    height: 26rem;
+    height: 50rem;
     border-radius: 15px;
     padding: 30px 40px;
 }
@@ -105,4 +105,35 @@ body{
 }
 .register-link p a:hover{
     text-decoration: underline;
+}
+.isDoc{
+    flex-direction: row;
+    background-color: #333;
+    width: 20%;
+    height: 50px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    background: transparent;
+}
+#isDoctor{
+    color: white;
+    margin-left: 20%;
+}
+.isPat{
+    flex-direction: row;
+    background-color: #333;
+    width: 20%;
+    height: 30px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    background: transparent;
+    margin-top: .5rem;
+}
+#isPatient{
+    color: white;
+    margin-left: 20%;
 }
