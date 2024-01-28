@@ -1,6 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const SignUp = () => {
+
+    const [data,setData] = useState({
+        name:"",
+        email:"",
+        phone:"",
+        role:"",
+        password:"",
+        department:"",
+        disease:""
+    });
+
+    function changeHandler(event){
+        console.log('change');
+        setData((prevData) => (
+          {
+            ...prevData , [event.target.name]:event.target.value
+          }
+        
+        ))
+      
+
     return (
         <div className='wrapper'>
           <form onSubmit={submitHandler}>
@@ -36,4 +57,5 @@ export const SignUp = () => {
           </form>
         </div>
       )
+}
 }
