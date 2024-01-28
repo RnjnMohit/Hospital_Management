@@ -47,7 +47,7 @@ const LoginForm = ({setIsLoggedIn}) => {
   }
 
   return (
-    <div className='wrapper'>
+    <div className='wrappers'>
       <form onSubmit={submitHandler}>
         <h1>Login</h1>
         <div className='input-box'>
