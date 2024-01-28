@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './LoginForm.css';
+import toast from "react-hot-toast";
 
 const LoginForm = ({setIsLoggedIn}) => {
 
@@ -15,12 +16,34 @@ const LoginForm = ({setIsLoggedIn}) => {
     ))
   }
 
-
-  function submitHandler(event){
-    console.log('submit');
-    console.log(data);
+  async function submitHandler(event){
     event.preventDefault();
+    const response = await fetch("http://localhost:4000/user/login", {
+      method:"POST",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email:data.email,
+        password:data.password
+      })
+    });
+
+    const json = await response.json();
+    console.log(json);
+
+    if(response.status===401){
+      toast.error('User is not registered');
+      return;
+    }
+
+    if(response.status===403){
+      toast.error('Password Incorrect');
+      return;
+    }
+
     setIsLoggedIn(true);
+    toast.success('Logged In');
   }
 
   return (

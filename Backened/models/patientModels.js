@@ -18,6 +18,10 @@ const patientSchema = new mongoose.Schema({
             }
         }
     },
+    password:{
+        type:String,
+        required:true
+    },
     disease: {
         type: String,
         required: true,

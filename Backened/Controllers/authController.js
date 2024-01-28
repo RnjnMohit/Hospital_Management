@@ -1,6 +1,7 @@
-const userModel = require('../models/userModels');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const Doctor = require('../models/doctorModels');
+const Patient = require('../models/patientModels');
 
 //login
 exports.login = async (req,res) => {
@@ -17,7 +18,13 @@ exports.login = async (req,res) => {
         }
 
         //check for registered user
-        let user = await userModel.findOne({email});
+        let user = await Doctor.findOne({email});
+
+        //Patient check-->
+        if(!user){
+            user = await Patient.findOne({email});
+        }
+
         //if not a registered user
         if(!user) {
             return res.status(401).json({
@@ -55,7 +62,7 @@ exports.login = async (req,res) => {
                 success:true,
                 token,
                 user,
-                message:'User Logged in successfully',
+                message:`User Logged in successfully as ${user.role}`,
             });
         }
         else {
