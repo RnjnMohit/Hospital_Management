@@ -66,12 +66,14 @@ exports.doctorsList = async (req,res) => {
     try{
         //get data
         const doctors = await Doctor.find();
+        const numberOfDoctors = doctors.length;
 
         //send the list of doctor as a response
         res.status(200).json({
             success:true,
             message:'Doctor list retrives Successfully',
-            data: doctors,
+            data: [doctors,numberOfDoctors],
+
         });
     }
     catch(error){
@@ -87,11 +89,12 @@ exports.doctorsList = async (req,res) => {
 exports.patientList = async (req,res) => {
     try{
         const patients = await Patient.find();
+        const numberOfPatient = patients.length;
 
         res.status(200).json({
             success:true,
             message:'Patient List retrived successfully',
-            data: patients,
+            data: [patients,numberOfPatient],
         });
     }
     catch(error){
