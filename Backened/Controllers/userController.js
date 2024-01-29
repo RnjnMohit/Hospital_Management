@@ -30,8 +30,16 @@ module.exports.createUser = async function createUser(req, res) {
             const newUser = await Patient.create(userData);
             saveUserAndRespond(newUser, res);
         } else if (role === 'doctor') {
-            const newUser = await Doctor.create(userData);
-            saveUserAndRespond(newUser, res);
+            const user = await Patient.findOne({email,phone});
+            if(user){
+                res.status(404).json({
+                    success:false,
+                    message:"Already Registered as Doctor",
+                })
+            }else{
+                const newUser = await Doctor.create(userData);
+                saveUserAndRespond(newUser, res);
+            }
         } else {
             res.status(400).json({
                 message: "Invalid role",
