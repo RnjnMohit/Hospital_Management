@@ -16,9 +16,11 @@ app.use(cors());
 const user = require('./routes/userRoutes');
 const auth = require('./routes/authRoutes');
 const appointments = require('./routes/appointmentRoutes');
+const patientrecord = require('./routes/patientRecord');
 app.use("/hospital", user);
 app.use('/user', auth);
 app.use('/user/doctor', appointments);
+app.use('/hospital/patient', patientrecord);
 
 app.listen(PORT, () => {
     console.log(`App is listening at ${PORT}`);

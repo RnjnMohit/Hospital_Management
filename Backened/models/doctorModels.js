@@ -34,6 +34,10 @@
             type: String,
             default: 'doctor', // Set a default value if needed
             enum: ['doctor'],  // Optional: Specify valid roles
+        },
+        appointments: {
+            type:mongoose.Schema.Types.ObjectId,
+            ref : 'Patient'
         }
     });
 
