@@ -18,6 +18,7 @@ const patientRecord = new mongoose.Schema({
     },
     drVisited:{
         type:mongoose.Schema.Types.ObjectId,
+        required:true,
     },
     totalAppointments:{
         type:Number,
